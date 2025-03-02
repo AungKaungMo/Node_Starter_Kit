@@ -44,11 +44,18 @@ A powerful and flexible Node.js starter kit that includes authentication, sessio
 
    #### Sample `.env` File:
    ```env
-   DATABASE_URL=mysql://user:password@localhost:3306/mydatabase
-   JWT_SECRET=your_jwt_secret_key
-   REFRESH_TOKEN_SECRET=your_refresh_token_secret
-   SESSION_SECRET=your_session_secret
-   PORT=5000
+      NODE_ENV=local
+      DEBUG=true
+      PORT=3000
+      APP_ORIGIN=http://localhost:5143
+      JWT_REFRESH_SECRET=jfoaifh4h3$@90fjeoia
+      JWT_SECRET=121jofaho4@!h98*&ji
+
+      MYSQL_PORT=3306
+      MYSQL_DATABASE=check_in_out
+      MYSQL_USER=root
+      MYSQL_PASSWORD=password
+      DATABASE_URL="mysql://root:password@mysql_db:3306/check_in_out"
    ```
 
 4. **Run the development server**
