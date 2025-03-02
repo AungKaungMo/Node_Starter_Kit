@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String    @id @default(uuid())
+  name       String
+  email      String    @unique
+  phone      String?   @unique
+  password   String
+  deleted_at DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  mediaLinks MediaAssignment[]
+}
+
+model Session {
+  id        String   @id @default(uuid())
+  userId    String
+  userAgent String?
+  expiredAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId], map: "UserId_fkey")
+}
+
+model Media {
+  id         String            @id @default(uuid())
+  file_path  String
+  file_name  String
+  file_type  String
+  file_size  Int
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+  mediaLinks MediaAssignment[]
+}
+
+model MediaAssignment {
+  id      String @id @default(uuid())
+  mediaId String @unique
+  media   Media  @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([mediaId, userId])
+}

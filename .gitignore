@@ -1,0 +1,6 @@
+uploads/*
+.env
+node_modules
+prisma.txt
+npm-debug.log
+.git

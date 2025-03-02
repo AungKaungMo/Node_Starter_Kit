@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: node-app
+    restart: always
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ./uploads:/app/uploads
+    env_file:
+      - .env
+    command: ["sh", "-c", "npm run prisma:generate && npm start"]
+
+  mysql:
+    image: mysql:8
+    container_name: mysql_db
+    restart: always
+    ports:
+      - "${MYSQL_PORT}:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
