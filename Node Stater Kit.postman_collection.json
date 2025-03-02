@@ -1,0 +1,981 @@
+{
+	"info": {
+		"_postman_id": "3707f7cc-6e1e-43a7-ad96-028c88eddaa6",
+		"name": "Node Stater Kit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24956420"
+	},
+	"item": [
+		{
+			"name": "V1",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Moe Moe\",\n    \"email\": \"moemoe@gmail.com\",\n    \"password\": \"akm123\",\n    \"confirmPassword\": \"akm123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/register",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Register Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Moe\",\n    \"email\": \"moe@gmail.com\",\n    \"password\": \"akm123\",\n    \"confirmPassword\": \"akm123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}v1/auth/register",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"register"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"code\": 201,\n    \"data\": {\n        \"id\": \"4d7b664d-c466-4474-aa15-7bc2677c447d\",\n        \"name\": \"Moe Moe\",\n        \"email\": \"moemoe@gmail.com\",\n        \"phone\": null,\n        \"createdAt\": \"2025-02-24T14:11:37.684Z\",\n        \"updatedAt\": \"2025-02-24T14:11:37.684Z\"\n    }\n}"
+								},
+								{
+									"name": "Register Duplicate",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Moe\",\n    \"email\": \"moe@gmail.com\",\n    \"password\": \"akm123\",\n    \"confirmPassword\": \"akm123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}v1/auth/register",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"register"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"Email already in use.\"\n}"
+								},
+								{
+									"name": "Register Validation",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Moe\",\n    \"email\": \"moe@gmail.com\",\n    \"password\": \"akm123\",\n    \"confirmPassword\": \"a\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}v1/auth/register",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"register"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"[\\n  {\\n    \\\"code\\\": \\\"too_small\\\",\\n    \\\"minimum\\\": 6,\\n    \\\"type\\\": \\\"string\\\",\\n    \\\"inclusive\\\": true,\\n    \\\"exact\\\": false,\\n    \\\"message\\\": \\\"String must contain at least 6 character(s)\\\",\\n    \\\"path\\\": [\\n      \\\"confirmPassword\\\"\\n    ]\\n  },\\n  {\\n    \\\"code\\\": \\\"custom\\\",\\n    \\\"message\\\": \\\"Pasword didn't match.\\\",\\n    \\\"path\\\": [\\n      \\\"confirmPassword\\\"\\n    ]\\n  }\\n]\",\n    \"errors\": [\n        {\n            \"path\": \"confirmPassword\",\n            \"message\": \"String must contain at least 6 character(s)\"\n        },\n        {\n            \"path\": \"confirmPassword\",\n            \"message\": \"Pasword didn't match.\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"moemoe@gmail.com\",\n    \"password\": \"akm123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/login",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Login Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"moe@gmail.com\",\n    \"password\": \"akm123\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}v1/auth/login",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"code\": 201,\n    \"message\": \"Login successfully.\"\n}"
+								},
+								{
+									"name": "Login Validation",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"\",\n    \"password\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}v1/auth/login",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"[\\n  {\\n    \\\"validation\\\": \\\"email\\\",\\n    \\\"code\\\": \\\"invalid_string\\\",\\n    \\\"message\\\": \\\"Invalid email\\\",\\n    \\\"path\\\": [\\n      \\\"email\\\"\\n    ]\\n  },\\n  {\\n    \\\"code\\\": \\\"too_small\\\",\\n    \\\"minimum\\\": 1,\\n    \\\"type\\\": \\\"string\\\",\\n    \\\"inclusive\\\": true,\\n    \\\"exact\\\": false,\\n    \\\"message\\\": \\\"String must contain at least 1 character(s)\\\",\\n    \\\"path\\\": [\\n      \\\"email\\\"\\n    ]\\n  },\\n  {\\n    \\\"code\\\": \\\"too_small\\\",\\n    \\\"minimum\\\": 6,\\n    \\\"type\\\": \\\"string\\\",\\n    \\\"inclusive\\\": true,\\n    \\\"exact\\\": false,\\n    \\\"message\\\": \\\"String must contain at least 6 character(s)\\\",\\n    \\\"path\\\": [\\n      \\\"password\\\"\\n    ]\\n  }\\n]\",\n    \"errors\": [\n        {\n            \"path\": \"email\",\n            \"message\": \"Invalid email\"\n        },\n        {\n            \"path\": \"email\",\n            \"message\": \"String must contain at least 1 character(s)\"\n        },\n        {\n            \"path\": \"password\",\n            \"message\": \"String must contain at least 6 character(s)\"\n        }\n    ]\n}"
+								},
+								{
+									"name": "Login Fail",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"moe@gmail.com\",\n    \"password\": \"akm1k23\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}v1/auth/login",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"Invalid password.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/auth/logout",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"logout"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Logout Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/auth/logout",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"logout"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"code\": 201,\n    \"message\": \"Logout successful.\"\n}"
+								},
+								{
+									"name": "Logout Fail",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/auth/logout",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"logout"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"Something went wrong.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Refresh Token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/auth/refresh",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"refresh"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Refresh Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/auth/refresh",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"refresh"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"code\": 200,\n    \"message\": \"Access token refreshed\"\n}"
+								},
+								{
+									"name": "Refresh Fail",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/auth/refresh",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"refresh"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"Missing refresh token.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Change Password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"currentPassword\": \"akm1234\",\n    \"newPassword\": \"akm1234\",\n    \"confirmPassword\": \"akm1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/auth/change-password",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"auth",
+										"change-password"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Change Password Fail",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"currentPassword\": \"akm123\",\n    \"newPassword\": \"akm1234\",\n    \"confirmPassword\": \"akm1234\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}v1/auth/change-password",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"change-password"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"Password incorrect.\"\n}"
+								},
+								{
+									"name": "Change Password Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"currentPassword\": \"akm1234\",\n    \"newPassword\": \"akm1234\",\n    \"confirmPassword\": \"akm1234\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}v1/auth/change-password",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"auth",
+												"change-password"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"code\": 200,\n    \"message\": \"Change password successfully.\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Session",
+					"item": [
+						{
+							"name": "Get All Session",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/session",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"session"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get All Session",
+									"originalRequest": {
+										"method": "GET",
+										"header": []
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"code\": 200,\n    \"message\": \"Get all sessions \",\n    \"sessions\": [\n        {\n            \"id\": \"4317f84e-63f9-48bc-852f-9e2740d4b0d1\",\n            \"userId\": \"7957e199-7272-4f37-a7cb-e3d6e013312a\",\n            \"userAgent\": \"PostmanRuntime/7.43.0\",\n            \"expiredAt\": \"2025-03-27T07:42:10.490Z\",\n            \"createdAt\": \"2025-02-24T14:20:00.967Z\",\n            \"updatedAt\": \"2025-02-25T07:42:10.493Z\"\n        },\n        {\n            \"id\": \"5ebc400a-65f4-43a7-a7db-8724ec3d837b\",\n            \"userId\": \"4d7b664d-c466-4474-aa15-7bc2677c447d\",\n            \"userAgent\": \"PostmanRuntime/7.43.0\",\n            \"expiredAt\": \"2025-03-26T14:11:37.683Z\",\n            \"createdAt\": \"2025-02-24T14:11:37.701Z\",\n            \"updatedAt\": \"2025-02-24T14:11:37.701Z\"\n        },\n        {\n            \"id\": \"b3951885-c40c-4e81-8554-6dd39e7dcdba\",\n            \"userId\": \"8353a650-5a73-4fb7-8d18-ca2350aaabf4\",\n            \"userAgent\": \"Apidog/1.0.0 (https://apidog.com)\",\n            \"expiredAt\": \"2025-03-26T14:03:47.777Z\",\n            \"createdAt\": \"2025-02-23T09:24:46.905Z\",\n            \"updatedAt\": \"2025-02-24T14:03:47.779Z\"\n        },\n        {\n            \"id\": \"f7308472-3472-4023-9768-70236d4f3c6b\",\n            \"userId\": \"4fe2e984-6ba3-4a85-8caf-7bd7cbf00670\",\n            \"userAgent\": \"PostmanRuntime/7.43.0\",\n            \"expiredAt\": \"2025-02-24T14:35:23.697Z\",\n            \"createdAt\": \"2025-02-24T14:05:09.545Z\",\n            \"updatedAt\": \"2025-02-24T14:05:23.698Z\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Session",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/session/:id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"session",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4317f84e-63f9-48bc-852f-9e2740d4b0d1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete Session Success Error",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/session/:id",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"session",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "4317f84e-63f9-48bc-852f-9e2740d4b0d1"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"Session not found.\"\n}"
+								},
+								{
+									"name": "Delete Session Success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/session/:id",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"session",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "4317f84e-63f9-48bc-852f-9e2740d4b0d1"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"code\": 200,\n    \"message\": \"Delete session successfully.\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Get All User",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/user",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get All User",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/user",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"user"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Get all users.\",\n    \"data\": [\n        {\n            \"id\": \"4d7b664d-c466-4474-aa15-7bc2677c447d\",\n            \"name\": \"Moe Moe\",\n            \"email\": \"moemoe@gmail.com\",\n            \"phone\": null\n        },\n        {\n            \"id\": \"4fe2e984-6ba3-4a85-8caf-7bd7cbf00670\",\n            \"name\": \"Aung Aung Moe\",\n            \"email\": \"aam@gmail.com\",\n            \"phone\": null\n        },\n        {\n            \"id\": \"7957e199-7272-4f37-a7cb-e3d6e013312a\",\n            \"name\": \"Moe\",\n            \"email\": \"moe@gmail.com\",\n            \"phone\": null\n        },\n        {\n            \"id\": \"8353a650-5a73-4fb7-8d18-ca2350aaabf4\",\n            \"name\": \"Aung Kaung Moe\",\n            \"email\": \"akm@gmail.com\",\n            \"phone\": null\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Get User Detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/user/:id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4d7b664d-c466-4474-aa15-7bc2677c447d"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Get User Detail Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/user/:id",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"user",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "4d7b664d-c466-4474-aa15-7bc2677c447d"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Get user detail.\",\n    \"code\": 200,\n    \"data\": {\n        \"id\": \"4d7b664d-c466-4474-aa15-7bc2677c447d\",\n        \"name\": \"Min MIn\",\n        \"email\": \"moemoe@gmail.com\",\n        \"phone\": \"0954212332\",\n        \"media\": {\n            \"id\": \"6a41d00c-bbe2-472c-a4bb-09a3e5470f78\",\n            \"file_path\": \"uploads/1740820759964-868143244.png\",\n            \"file_name\": \"1740820759964-868143244.png\",\n            \"file_type\": \"image/png\",\n            \"file_size\": 137080,\n            \"createdAt\": \"2025-03-01T09:19:19.967Z\",\n            \"updatedAt\": \"2025-03-01T10:02:17.363Z\"\n        }\n    }\n}"
+								},
+								{
+									"name": "Get User Detail Error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/user/:id",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"user",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "4d7b664d-c466-4474-aa15-7bc2677c447d"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"User Not found with that id.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update User",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Min MIn\",\n    \"phone\": \"0954212332\",\n    \"deleted_at\": \"2025-03-02 00:00:00\",\n    \"mediaId\": \"18f93a8e-cf90-4d8e-b4b3-49238c0f08e5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}v1/user/:id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "a6725bdd-2510-4bbd-a87e-5664e96e8994"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Update User",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/user/:id",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"user",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "4d7b664d-c466-4474-aa15-7bc2677c447d"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"Success\",\n    \"message\": \"successfully updated the user.\",\n    \"code\": 200,\n    \"data\": {\n        \"id\": \"4d7b664d-c466-4474-aa15-7bc2677c447d\",\n        \"name\": \"Min MIn\",\n        \"email\": \"moemoe@gmail.com\",\n        \"phone\": \"0954212332\",\n        \"media\": {\n            \"id\": \"6a41d00c-bbe2-472c-a4bb-09a3e5470f78\",\n            \"file_path\": \"uploads/1740820759964-868143244.png\",\n            \"file_name\": \"1740820759964-868143244.png\",\n            \"file_type\": \"image/png\",\n            \"file_size\": 137080,\n            \"createdAt\": \"2025-03-01T09:19:19.967Z\",\n            \"updatedAt\": \"2025-03-01T10:02:17.363Z\"\n        }\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/user/:id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"user",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "7957e199-7272-4f37-a7cb-e3d6e013312a"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete User",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/user/:id",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"user",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "7957e199-7272-4f37-a7cb-e3d6e013312a"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Delete user successfully.\",\n    \"code\": 200\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Media",
+					"item": [
+						{
+							"name": "File Upload",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "multipart/form-data",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/home/akm/Downloads/book.jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}v1/file/upload",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"file",
+										"upload"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "File Upload Success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "multipart/form-data",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": "/home/akm/Pictures/Screenshots/Screenshot from 2025-02-28 13-46-58.png"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}v1/file/upload",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"file",
+												"upload"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Successfully uploaded the file.\",\n    \"code\": 200,\n    \"data\": {\n        \"id\": \"974e5769-0ffd-4d44-8e67-df4d89252fe2\",\n        \"model\": null,\n        \"model_id\": null,\n        \"file_path\": \"uploads/1740820608288-874492269.png\",\n        \"file_name\": \"1740820608288-874492269.png\",\n        \"file_type\": \"image/png\",\n        \"file_size\": 137080,\n        \"createdAt\": \"2025-03-01T09:16:48.301Z\",\n        \"updatedAt\": \"2025-03-01T09:16:48.301Z\"\n    }\n}"
+								},
+								{
+									"name": "File Upload Error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "multipart/form-data",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "file",
+													"type": "file",
+													"src": "/home/akm/Pictures/Screenshots/Screenshot from 2025-02-28 13-46-58.png"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{base_url}}v1/file/upload",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"file",
+												"upload"
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"Invalid file type. Only JPEG, PNG, and GIF are allowed.\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete File",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}v1/file/:id",
+									"host": [
+										"{{base_url}}v1"
+									],
+									"path": [
+										"file",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "88bb9609-2ae4-476a-972f-252242f581a1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Delete File",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{base_url}}v1/file/:id",
+											"host": [
+												"{{base_url}}v1"
+											],
+											"path": [
+												"file",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "974e5769-0ffd-4d44-8e67-df4d89252fe2"
+												}
+											]
+										}
+									},
+									"_postman_previewlanguage": null,
+									"header": null,
+									"cookie": [],
+									"body": "{\n    \"message\": \"There's no data with that id.\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
